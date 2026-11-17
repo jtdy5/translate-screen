@@ -1,0 +1,17 @@
+workflows:
+  ios-workflow:
+    name: iOS Workflow
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      xcode: latest
+    scripts:
+      - name: Build ScreenTranslate
+        script: |
+          xcodebuild \
+            -project ScreenTranslate.xcodeproj \
+            -scheme ScreenTranslate \
+            -sdk iphonesimulator \
+            -configuration Debug \
+            CODE_SIGNING_ALLOWED=NO \
+            build
